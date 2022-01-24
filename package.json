@@ -1,0 +1,23 @@
+{
+  "name": "ozflix",
+  "version": "1.0.0",
+  "description": "Streaming Service",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ozcodex/ozflix.git"
+  },
+  "author": "ozcodex",
+  "license": "The Unlicence",
+  "bugs": {
+    "url": "https://github.com/ozcodex/ozflix/issues"
+  },
+  "homepage": "https://github.com/ozcodex/ozflix#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
