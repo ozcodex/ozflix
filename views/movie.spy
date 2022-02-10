@@ -5,5 +5,5 @@
 <p>location: {{location}}</p>
 
  <video controls>
-  <source src="/movie/{{id}}/video" type="video/webm" />
+  <source src="{{base_uri}}/movie/{{id}}/video" type="video/webm" />
 </video>
