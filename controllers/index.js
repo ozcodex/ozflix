@@ -1,7 +1,11 @@
-const express = require('express')
-const router = express.Router()
+const express = require("express");
+const router = express.Router();
 
-router.use('/', require('./movie'))
+router.use("/movie", require("./movie"));
 //router.use('/users', require('./users'))
 
-module.exports = router
+router.use("/", function (req, res) {
+  res.redirect("/movie");
+});
+
+module.exports = router;

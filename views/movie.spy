@@ -1,0 +1,9 @@
+<h1>Movie Details:</h1>
+
+<p>id: {{id}}</p>
+<p>title: {{title}}</p>
+<p>location: {{location}}</p>
+
+ <video controls>
+  <source src="/movie/{{id}}/video" type="video/webm" />
+</video>
