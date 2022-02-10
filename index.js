@@ -1,23 +1,27 @@
-const express = require('express')
-const engine = require('express-handlebars').engine;
+const express = require("express");
+const engine = require("express-handlebars").engine;
+const controllers = require('./controllers')
+const mongoose = require('mongoose');
 
-const app = express()
-const port = 4000
+mongoose.connect('mongodb://localhost:27017/ozflix');
 
-app.engine('spy', engine({
-    defaultLayout: 'main',
-    extname: '.spy'
-}));
+const app = express();
+const port = 4000;
 
-app.set('view engine', 'spy');
+app.engine(
+	"spy",
+	engine({
+		defaultLayout: "main",
+		extname: ".spy",
+	})
+);
 
-app.use(express.static('public'));
+app.set("view engine", "spy");
 
-app.get('/', (req, res) => {
-	  res.render('home.spy', { message: 'Hello, Hello!' });
-})
+app.use(express.static("public"));
 
+app.use(controllers)
 
 app.listen(port, () => {
-	  console.log(`App listening on port ${port}`)
-})
+	console.log(`App listening on port ${port}`);
+});
