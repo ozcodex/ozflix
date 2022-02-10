@@ -19,6 +19,7 @@
   "homepage": "https://github.com/ozcodex/ozflix#readme",
   "dependencies": {
     "express": "^4.17.2",
-    "sprightly": "^1.0.3"
+    "express-handlebars": "^6.0.2",
+    "mongoose": "^6.2.1"
   }
 }
