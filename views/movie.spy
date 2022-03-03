@@ -4,6 +4,6 @@
 <p>title: {{title}}</p>
 <p>location: {{location}}</p>
 
- <video controls>
-  <source src="{{base_uri}}/movie/{{id}}/video" type="video/webm" />
+ <video controls disablepictureinpicture poster="{{base_uri}}/thumbnails/{{id}}.png"/>
+  <source src="{{base_uri}}/movie/{{id}}/video" type="video/webm">
 </video>

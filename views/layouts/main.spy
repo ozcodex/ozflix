@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>OzFlix</title>
-  <link href="/images/favicon.png" rel="shortcut icon">
+  <link href="{{base_uri}}/images/favicon.png" rel="shortcut icon">
 </head>
 <body>
   {{{body}}}

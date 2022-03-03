@@ -15,7 +15,7 @@ mongoose.connect("mongodb://localhost:27017/ozflix");
 const app = express();
 app.use(parser.urlencoded({ extended: false }));
 app.use(parser.json());
-app.use(express.static("public"));
+app.use(base_uri, express.static("public"));
 app.use(base_uri, controllers);
 // define the view rendering engine
 app.engine(
