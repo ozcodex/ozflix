@@ -21,4 +21,8 @@ To optimize the videos im using ffmpeg
 the frame rate is set between 700K and 1M, for this case, since i didnt have too much
 disk space im priorizing quantity over quality. 
 
-`ffmpeg -i sample.mp4 -vf scale=-1:720 -vcodec libvpx-vp9 -b:v 700K -acodec libvorbis test.webm`
+`ffmpeg -i sample.mp4 -vf scale=-1:720 -vcodec libvpx-vp9 -b:v 700K -acodec libvorbis output.webm`
+
+to generate mosaic thumbnail: 
+
+`ffmpeg -ss 30 -i sample.mp4 -vf select='gt(scene\,0.4)',scale=-1:240,tile=3x3 -frames:v 1 output.png`
