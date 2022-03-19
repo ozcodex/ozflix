@@ -1,45 +1,29 @@
 var express = require("express");
 const fs = require("fs");
-var Movie = require("../models/movie");
 const router = express.Router();
+const movieFolder = '/media/oz/TOSHIBA EXT/Peliculas/'
 
 router.get("/", function (req, res, next) {
-  Movie.find({})
-    .lean()
-    .then((movies) => {
-      res.render("home.spy", { movies });
-    })
-    .catch(next);
+  fs.readdir(movieFolder, (err, files) =>{
+    if(err) return next(err)
+    res.render("home.spy", { files });
+  })
 });
 
-router.post("/", function (req, res, next) {
-  var movie = req.body;
-  Movie.create(movie)
-    .then((err) => {
-      res.send(movie);
-    })
-    .catch(next);
+router.get("/:name", function (req, res, next) {
+  const name = req.params.name    
+  res.render("movie.spy", {name});
 });
 
-router.get("/:id", function (req, res, next) {
-  Movie.findOne({ id: req.params.id })
-    .lean()
-    .then((movie) => {
-      res.render("movie.spy", movie);
-    })
-    .catch(next);
-});
-
-router.get("/:id/video", function (req, res, next) {
+router.get("/:name/video", function (req, res, next) {
   // Ensure there is a range given for the video
   const range = req.headers.range;
+  const movie = req.params.name;
 
-  Movie.findOne({ id: req.params.id })
-    .lean()
-    .then((movie) => {
       // get video stats
-      const videoPath = movie.location;
-      const videoSize = fs.statSync(movie.location).size;
+      const videoPath = `${movieFolder}/${movie}`;
+      const videoSize = fs.statSync(videoPath).size;
+  console.log(videoPath)
 
       if (range) {
         const CHUNK_SIZE = 10 ** 6; // 1MB
@@ -69,8 +53,6 @@ router.get("/:id/video", function (req, res, next) {
         res.writeHead(200, headers);
         fs.createReadStream(videoPath).pipe(res);
       }
-    })
-    .catch(next);
 });
 
 module.exports = router;

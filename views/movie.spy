@@ -1,9 +1,7 @@
 <h1>Movie Details:</h1>
 
-<p>id: {{id}}</p>
-<p>title: {{title}}</p>
-<p>location: {{location}}</p>
+<p>filename: {{name}}</p>
 
- <video controls disablepictureinpicture poster="{{base_uri}}/thumbnails/{{id}}.png"/>
-  <source src="{{base_uri}}/movie/{{id}}/video" type="video/webm">
+ <video controls disablepictureinpicture poster="{{base_uri}}/thumbnails/loading.png"/>
+  <source src="{{base_uri}}/movie/{{name}}/video" type="video/webm">
 </video>
